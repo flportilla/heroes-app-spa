@@ -10,7 +10,9 @@ export const LoginPage = () => {
     const onLogin = () => {
         login('flportilla');
 
-        navigate('/', {
+        const lastPath = localStorage.getItem('lastPath') || '/'
+
+        navigate(lastPath, {
             replace: true
         })
     }
