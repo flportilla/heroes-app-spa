@@ -15,19 +15,14 @@ export const SearchPage = () => {
 
     const heroes = getHeroesByName(q);
 
-    const { formState, onInputChange, onResetForm } = useForm({
-        searchText: ''
+    const { formState, onInputChange } = useForm({
+        searchText: q
     });
-
     const { searchText } = formState
 
     const onSearchSubmit = (e) => {
-
         e.preventDefault();
-        // if (searchText.trim().length <= 1) return
         navigate(`?q=${searchText}`)
-
-        onResetForm();
     }
 
     return (
