@@ -1,8 +1,9 @@
 import { AuthContext } from "./AuthContext";
 
 import React, { useReducer } from 'react'
-import { authReducer } from "./AuthReducer";
+import { authReducer } from "./authReducer";
 import { types } from "../types/types";
+
 const init = () => {
     const userName = JSON.parse(localStorage.getItem('userName'))
     return {
@@ -16,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
     const [authState, authDispatch] = useReducer(authReducer, {}, init)
 
-    const onLogin = (name = '') => {
+    const login = (name = '') => {
 
         const user = {
             id: '0918',
@@ -44,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{
             ...authState,
-            login: onLogin,
+            login,
             logout,
         }} >
             {children}
